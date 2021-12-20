@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^17.0.1",
     "JSON": "^1.0.0"
   }
 }
