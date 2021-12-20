@@ -1,12 +1,22 @@
 import { Material, Materials } from "./materials";
+import { Collection } from "./collections"
 
 class Artefact {
     readonly name: string = "";
     readonly materialList: MaterialList[] = [];
+    collections: Collection[] = [];
+
 
     constructor(name: string, materials: MaterialList[]) {
         this.name = name;
         this.materialList = materials;
+
+
+        // For reverse-lookup
+        this.materialList.forEach( (materialListItem) => {
+            let material = materialListItem.material;
+            material.addArtefact(this);
+        });
     }
 }
 

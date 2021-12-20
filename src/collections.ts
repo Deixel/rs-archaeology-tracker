@@ -1,14 +1,25 @@
 import { Artefact, Artefacts } from "./artefacts"
+import { Collector } from "./collector";
 
-interface Collection {
-    name: string,
-    relics: Artefact[]
+
+class Collection {
+    name: string;
+    artefacts: Artefact[];
+    collectors: Collector[] = [];
+
+    constructor(name: string, artefacts: Artefact[]) {
+        this.name = name;
+        this.artefacts = artefacts;
+        
+        // For reverse-lookup
+        this.artefacts.forEach( (artefact) => {
+            artefact.collections.push(this);
+        })
+    }
 }
 
-let collectionsList: {[name: string]: Collection} = {
-    zarosian1 : {
-        name: "Zarosian I",
-        relics: [
+let Collections: {[name: string]: Collection} = {
+    zarosian1 : new Collection("Zarosian I", [
             Artefacts.venatorDagger,
             Artefacts.venatorLightCrossbow,
             Artefacts.legionaryGladius,
@@ -19,7 +30,7 @@ let collectionsList: {[name: string]: Collection} = {
             Artefacts.legatusMaximusFigurine,
             Artefacts.solemInUmbraPainting
         ]
-    }
+    )
 }
 
-export default collectionsList;
+export { Collections, Collection };

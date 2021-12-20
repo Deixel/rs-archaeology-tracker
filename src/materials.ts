@@ -1,24 +1,35 @@
-interface Material {
-    name: string,
-    link?: string
+import { Artefact } from "./artefacts"
+class Material {
+    name: string;
+    private link?: string;
+    artefacts: Artefact[] = [];
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    addArtefact(artefact: Artefact) {
+        this.artefacts.push(artefact);
+    }
 }
 
 let Materials: {[name: string]: Material} = {
+    
     // Generic
-    thirdAgeIron: { name: "Third Age Iron" },
-    samiteSilk: { name: "Samite Silk" },
-    whiteOak: { name: "White Oak" },
-    goldrune: { name: "Goldrune" },
-    orthenglass: { name: "Orthenglass" },
-    vellum: { name: "Vellum" },
-    leatherScraps: { name: "Leather Scraps" },
-    soapstone: { name: "Soapstone"},
+    thirdAgeIron: new Material("Third Age Iron"),
+    samiteSilk: new Material("Samite Silk"),
+    whiteOak: new Material("White Oak"),
+    goldrune: new Material("Goldrune"),
+    orthenglass: new Material("Orthenglass"),
+    vellum: new Material("Vellum"),
+    leatherScraps: new Material("Leather Scraps"),
+    soapstone: new Material("Soapstone"),
 
     // Zaros
-    zarosianInsignia: { name: "Zarosian Insignia" },
-    tyrianPurple: {name: "Tyrian Purple" }, 
-    imperialSteel: {name: "Imperial Steel" }, 
-    ancientVis: {name: "Ancient Vis" }, 
+    zarosianInsignia: new Material("Zarosian Insignia"),
+    tyrianPurple: new Material("Tyrian Purple"), 
+    imperialSteel: new Material("Imperial Steel"), 
+    ancientVis: new Material("Ancient Vis"), 
 
     // Zamorak
 

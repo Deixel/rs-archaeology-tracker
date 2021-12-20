@@ -1,10 +1,12 @@
-import collections from "./collections";
+import { Collections } from "./collections";
+import { Materials, Material } from "./materials"
 
 let totals = new Map<String, number>();
-console.log(collections.zarosian1.name + " requires:")
-collections.zarosian1.relics.forEach( (relic) => {
-    console.log("- " + relic.name);
-    relic.materialList.forEach( (materialListItem) => {
+let collection = Collections.zarosian1;
+// console.log(collection.name + " requires:")
+collection.artefacts.forEach( (artefact) => {
+    // console.log("- " + artefact.name);
+    artefact.materialList.forEach( (materialListItem) => {
         let material = materialListItem.material;
         let materialName = material.name;
         if(!totals.has(materialName)) {
@@ -16,7 +18,17 @@ collections.zarosian1.relics.forEach( (relic) => {
         }
     })
 })
-console.log("\nIn total, these require: ")
-totals.forEach( (quantity, material) => {
-    console.log("- " + quantity + "x " + material)
-});
+// console.log("\nIn total, these require: ")
+// totals.forEach( (quantity, material) => {
+//     console.log("- " + quantity + "x " + material)
+// });
+
+for(let key in Materials) {
+    let material = Materials[key];
+    console.log(material.name + " is used to repair: ");
+    material.artefacts.forEach( artefact => {
+        let collections = artefact.collections.map( coll => coll.name).join(", ")
+        console.log("- " + artefact.name + " (" + collections + ")");
+        
+    })
+}
