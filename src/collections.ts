@@ -1,5 +1,4 @@
-import Relics from "./relics";
-import { Relic } from "./relics"
+import { Relic, Relics } from "./relics"
 
 interface Collection {
     name: string,

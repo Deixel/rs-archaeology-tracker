@@ -1,9 +1,9 @@
-export interface Material {
+interface Material {
     name: string,
     link?: string
 }
 
-let materials: {[name: string]: Material} = {
+let Materials: {[name: string]: Material} = {
     // Generic
     thirdAgeIron: { name: "Third Age Iron" },
     samiteSilk: { name: "Samite Silk" },
@@ -29,4 +29,4 @@ let materials: {[name: string]: Material} = {
     // Saradomin
 }
 
-export default materials;
+export {Materials, Material}

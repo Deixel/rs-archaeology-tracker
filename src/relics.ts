@@ -1,7 +1,6 @@
-import Materials from "./materials";
-import { Material } from "./materials";
+import { Material, Materials } from "./materials";
 
-export class Relic {
+class Relic {
     readonly name: string = "";
     readonly materialList: MaterialList[] = [];
 
@@ -17,7 +16,7 @@ interface MaterialList {
 }
 
 
-export default {
+let Relics = {
     venatorDagger : new Relic("Venator Dagger", [
             {
                 material : Materials.thirdAgeIron,
@@ -137,3 +136,5 @@ export default {
             }
         ])
 }
+
+export {Relic, Relics}

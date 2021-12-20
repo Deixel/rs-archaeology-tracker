@@ -1,4 +1,3 @@
-import relics from "./relics";
 import collections from "./collections";
 
 require('JSON');
