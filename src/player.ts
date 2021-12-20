@@ -1,83 +1,68 @@
-import { Relic } from "./relics"
+import { Artefact } from "./artefacts"
 
 export class Player {
-    private damagedRelics = new Map<Relic, number>();
-    private repairedRelics = new Map<Relic, number>();
+    private damagedArtefacts = new Map<Artefact, number>();
+    private repairedArtefacts = new Map<Artefact, number>();
 
     constructor() { }
 
-    addDamagedRelic(relic: Relic, count: number) {
-        if(!this.damagedRelics.has(relic)) {
-            this.damagedRelics.set(relic, count);
-        }
-        else {
-            let currentCount = this.damagedRelics.get(relic) as number;
-            this.damagedRelics.set(relic, currentCount + count);
-        }
+    // DAMAGED
+
+    addDamagedArtefact(artefact: Artefact, count: number) {
+        let currentCount = this.getDamagedCount(artefact);
+        this.setDamagedCount(artefact, currentCount + count);
     }
 
-    setDamagedRelicCount(relic: Relic, count: number) {
-        this.damagedRelics.set(relic, count);
+    setDamagedCount(artefact: Artefact, count: number) {
+        if(count < 0) { 
+            count = 0;
+        }
+        this.damagedArtefacts.set(artefact, count);
     }
 
-    subtractDamagedRelic(relic: Relic, count: number) {
-        if(!this.damagedRelics.has(relic)) {
-            this.damagedRelics.set(relic, 0);
-        }
-        else {
-            let currentCount = this.damagedRelics.get(relic) as number;
-            let newCount = currentCount - count;
-            if(newCount < 0) {
-                newCount = 0;
-            }
-            this.damagedRelics.set(relic, newCount);
-        }
+    subtractDamagedArtefact(artefact: Artefact, count: number) {
+        let currentCount = this.getDamagedCount(artefact);
+        this.setDamagedCount(artefact, currentCount - count);
     }
 
-    getDamagedCount(relic: Relic): number {
-        return this.damagedRelics.get(relic) || 0;
+    getDamagedCount(artefact: Artefact): number {
+        return this.damagedArtefacts.get(artefact) || 0;
     }
 
-    repair(relic: Relic, count: number) {
-        if(!this.damagedRelics.has(relic)) {
-            throw "No " + relic.name;
+    // REPAIR
+
+    repair(artefact: Artefact, count: number) {
+        if(this.getDamagedCount(artefact) == 0) {
+            throw "No " + artefact.name;
         }
-        else if(this.damagedRelics.get(relic) as number < count) {
-            throw "Not enough " + relic.name;
+        else if(this.getDamagedCount(artefact) < count) {
+            throw "Not enough " + artefact.name;
         }
-        this.subtractDamagedRelic(relic, count);
-        this.addRepairedRelic(relic, count);
-    }
-    addRepairedRelic(relic: Relic, count: number) {
-        if(!this.repairedRelics.has(relic)) {
-            this.repairedRelics.set(relic, count);
-        }
-        else {
-            let currentCount = this.repairedRelics.get(relic) as number;
-            this.repairedRelics.set(relic, currentCount + count);
-        }
+        this.subtractDamagedArtefact(artefact, count);
+        this.addRepairedArtefact(artefact, count);
     }
 
-    setRepairedRelicCount(relic: Relic, count: number) {
-        this.repairedRelics.set(relic, count);
+    // REPAIRED
+
+    addRepairedArtefact(artefact: Artefact, count: number) {
+        let currentCount = this.getRepairedCount(artefact);
+        this.setRepairedCount(artefact, currentCount + count);
     }
 
-    subtractrepairedRelic(relic: Relic, count: number) {
-        if(!this.repairedRelics.has(relic)) {
-            this.repairedRelics.set(relic, 0);
+    setRepairedCount(artefact: Artefact, count: number) {
+        if(count < 0) {
+            count = 0;
         }
-        else {
-            let currentCount = this.repairedRelics.get(relic) as number;
-            let newCount = currentCount - count;
-            if(newCount < 0) {
-                newCount = 0;
-            }
-            this.repairedRelics.set(relic, newCount);
-        }
+        this.repairedArtefacts.set(artefact, count);
     }
 
-    getRepaiedCount(relic: Relic) : number {
-        return this.repairedRelics.get(relic) || 0;
+    subtractRepairedArtefact(artefact: Artefact, count: number) {
+        let currentCount = this.getRepairedCount(artefact);
+        this.setRepairedCount(artefact, currentCount - count);
+    }
+
+    getRepairedCount(artefact: Artefact) : number {
+        return this.repairedArtefacts.get(artefact) || 0;
     }
 
     

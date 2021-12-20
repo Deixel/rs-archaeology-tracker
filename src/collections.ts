@@ -1,23 +1,23 @@
-import { Relic, Relics } from "./relics"
+import { Artefact, Artefacts } from "./artefacts"
 
 interface Collection {
     name: string,
-    relics: Relic[]
+    relics: Artefact[]
 }
 
 let collectionsList: {[name: string]: Collection} = {
     zarosian1 : {
         name: "Zarosian I",
         relics: [
-            Relics.venatorDagger,
-            Relics.venatorLightCrossbow,
-            Relics.legionaryGladius,
-            Relics.legionarySquareShield,
-            Relics.primisElementisStandard,
-            Relics.zarosEffigy,
-            Relics.zarosianTrainingDummy,
-            Relics.legatusMaximusFigurine,
-            Relics.solemInUmbraPainting
+            Artefacts.venatorDagger,
+            Artefacts.venatorLightCrossbow,
+            Artefacts.legionaryGladius,
+            Artefacts.legionarySquareShield,
+            Artefacts.primisElementisStandard,
+            Artefacts.zarosEffigy,
+            Artefacts.zarosianTrainingDummy,
+            Artefacts.legatusMaximusFigurine,
+            Artefacts.solemInUmbraPainting
         ]
     }
 }

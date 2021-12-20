@@ -2,10 +2,11 @@ import "mocha"
 // import { expect } from "chai";
 import { should } from "chai"
 import { Player } from "./player"
-import { Relics, Relic } from "./relics"
+import { Artefacts } from "./artefacts"
+import { arch } from "os";
 let itShould = should();
 let player: Player;
-let relic = Relics.legatusMaximusFigurine;
+let artefact = Artefacts.legatusMaximusFigurine;
 
 
 describe("Player", function () {
@@ -13,43 +14,51 @@ describe("Player", function () {
         player = new Player();
     })
 
-    describe("Damaged Relics", function () {
-        it("can get non-existent relics", function () {
-            player.getDamagedCount(Relics.legatusMaximusFigurine).should.equal(0);
+    describe("Damaged Artefacts", function () {
+        it("can get count of an artefact you've never used before", function () {
+            player.getDamagedCount(artefact).should.equal(0);
         });
 
-        it("can't be repaired if it doesn't exist", function () {
-            itShould.Throw( function () { player.repair(Relics.legatusMaximusFigurine, 1) }, "No " + relic.name);
-            player.getRepaiedCount(relic).should.equal(0);
+        it("can't be repaired if you don't have any", function () {
+            itShould.Throw( function () { player.repair(artefact, 1) }, "No " + artefact.name);
+            player.getRepairedCount(artefact).should.equal(0);
         });
 
-        it("can add some of a relic", function () {
-            player.addDamagedRelic(Relics.legatusMaximusFigurine, 3);
-            player.getDamagedCount(Relics.legatusMaximusFigurine).should.equal(3);
+        it("can add the count of a artefact", function () {
+            player.addDamagedArtefact(artefact, 3);
+            player.getDamagedCount(artefact).should.equal(3);
         });
 
-        it("can add some more of a relic", function () {
-            player.addDamagedRelic(relic, 1);
-            player.addDamagedRelic(relic, 4);
-            player.getDamagedCount(relic).should.equal(5);
+        it("can add some more of a artefact", function () {
+            player.addDamagedArtefact(artefact, 1);
+            player.addDamagedArtefact(artefact, 4);
+            player.getDamagedCount(artefact).should.equal(5);
         })
 
-        it("can subtract some that doesn't exist", function () {
-            player.subtractDamagedRelic(relic, 1);
+        it("can't subtract more than you have", function () {
+            player.subtractDamagedArtefact(artefact, 1);
         });
 
         it("can't be repaired if don't have enough", function () {
             
-            player.addDamagedRelic(Relics.legatusMaximusFigurine, 1);
-            itShould.Throw( function () { player.repair(Relics.legatusMaximusFigurine, 3) }, "Not enough " + relic.name )
-            player.getRepaiedCount(relic).should.equal(0);
+            player.addDamagedArtefact(artefact, 1);
+            itShould.Throw( function () { player.repair(artefact, 3) }, "Not enough " + artefact.name )
+            player.getRepairedCount(artefact).should.equal(0);
         });
 
         it("can be repaired", function () {
-            player.addDamagedRelic(relic, 1);
-            player.repair(relic, 1);
-            player.getDamagedCount(relic).should.equal(0);
-            player.getRepaiedCount(relic).should.equal(1);
+            player.addDamagedArtefact(artefact, 1);
+            player.repair(artefact, 1);
+            player.getDamagedCount(artefact).should.equal(0);
+            player.getRepairedCount(artefact).should.equal(1);
         });
+    });
+
+    describe("Repaired Artefacts", function () {
+        it("can't subtract more than you have", function () {
+            player.addRepairedArtefact(artefact, 2);
+            player.subtractRepairedArtefact(artefact, 4);
+            player.getRepairedCount(artefact).should.equal(0);
+        })
     });
 })

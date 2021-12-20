@@ -1,6 +1,6 @@
 import { Material, Materials } from "./materials";
 
-class Relic {
+class Artefact {
     readonly name: string = "";
     readonly materialList: MaterialList[] = [];
 
@@ -16,8 +16,8 @@ interface MaterialList {
 }
 
 
-let Relics = {
-    venatorDagger : new Relic("Venator Dagger", [
+let Artefacts = {
+    venatorDagger : new Artefact("Venator Dagger", [
             {
                 material : Materials.thirdAgeIron,
                 quantity : 16
@@ -28,7 +28,7 @@ let Relics = {
             }
         ])
     ,
-    venatorLightCrossbow : new Relic("Venator Light Crossbow",[
+    venatorLightCrossbow : new Artefact("Venator Light Crossbow",[
             {
                 material : Materials.thirdAgeIron,
                 quantity : 12
@@ -39,7 +39,7 @@ let Relics = {
             }
         ])
     ,
-    legionaryGladius : new Relic("Legionary Gladius", [
+    legionaryGladius : new Artefact("Legionary Gladius", [
             {
                 material : Materials.thirdAgeIron,
                 quantity : 10
@@ -54,7 +54,7 @@ let Relics = {
             }
         ])
     ,
-    legionarySquareShield : new Relic("Legionary Square Shield", [
+    legionarySquareShield : new Artefact("Legionary Square Shield", [
             {
                 material : Materials.thirdAgeIron,
                 quantity : 8
@@ -69,7 +69,7 @@ let Relics = {
             }
         ])
     ,
-    primisElementisStandard : new Relic("Primis Elementis Standard", [
+    primisElementisStandard : new Artefact("Primis Elementis Standard", [
             {
                 material : Materials.samiteSilk,
                 quantity : 16
@@ -80,7 +80,7 @@ let Relics = {
             }
         ])
     ,
-    zarosEffigy : new Relic("Zaros Effigy", [
+    zarosEffigy : new Artefact("Zaros Effigy", [
             {
                 material : Materials.samiteSilk,
                 quantity : 8
@@ -95,7 +95,7 @@ let Relics = {
             }
         ])
     ,
-    zarosianTrainingDummy : new Relic("Zarosian Training Dummy", [
+    zarosianTrainingDummy : new Artefact("Zarosian Training Dummy", [
             {
                 material : Materials.thirdAgeIron,
                 quantity : 16
@@ -106,7 +106,7 @@ let Relics = {
             }
         ])
     ,
-    legatusMaximusFigurine : new Relic("Legatus Maximus Figurine", [
+    legatusMaximusFigurine : new Artefact("Legatus Maximus Figurine", [
             {
                 material : Materials.goldrune,
                 quantity : 8
@@ -121,7 +121,7 @@ let Relics = {
             }
         ])
     ,
-    solemInUmbraPainting : new Relic("'Solem in Umbra' Painting", [
+    solemInUmbraPainting : new Artefact("'Solem in Umbra' Painting", [
             {
                 material : Materials.samiteSilk,
                 quantity : 8
@@ -137,4 +137,4 @@ let Relics = {
         ])
 }
 
-export {Relic, Relics}
+export {Artefact, Artefacts}
