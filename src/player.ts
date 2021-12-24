@@ -1,4 +1,6 @@
 import { Artefact } from "./artefacts"
+import { Collection } from "./collections";
+import { Material } from "./materials";
 
 export class Player {
     private damagedArtefacts = new Map<Artefact, number>();
@@ -63,6 +65,27 @@ export class Player {
 
     getRepairedCount(artefact: Artefact) : number {
         return this.repairedArtefacts.get(artefact) || 0;
+    }
+
+    calculateCollectionRepair(collection: Collection): Map<Material, number> {
+        let totals = new Map<Material, number>();
+        collection.artefacts.forEach( (artefact) => {
+            artefact.materialList.forEach( (materialListLitem) => {
+                // The player already has a repaired artefact, so no need to calculate it now
+                if(this.getRepairedCount(artefact) > 0) {
+                    return;
+                }
+                let material = materialListLitem.material;
+                if(!totals.has(material)) {
+                    totals.set(material, materialListLitem.quantity)
+                }
+                else {
+                    let currentValue = totals.get(material) as number;
+                    totals.set(material, currentValue + materialListLitem.quantity);
+                }
+            })
+        })
+        return totals;
     }
 
     

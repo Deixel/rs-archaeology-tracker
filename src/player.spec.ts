@@ -3,10 +3,12 @@ import "mocha"
 import { should } from "chai"
 import { Player } from "./player"
 import { Artefacts } from "./artefacts"
-import { arch } from "os";
+import { Collections } from "./collections"
+import { Material, Materials } from "./materials"
 let itShould = should();
 let player: Player;
 let artefact = Artefacts.legatusMaximusFigurine;
+let collection = Collections.zarosian1;
 
 
 describe("Player", function () {
@@ -61,4 +63,55 @@ describe("Player", function () {
             player.getRepairedCount(artefact).should.equal(0);
         })
     });
-})
+
+    describe("Calulator", function() {
+        it("calculates full requirements if no artefacts are repaired", function() {
+            let expectedMaterials = new Map<Material, number>([
+                [Materials.thirdAgeIron, 74],
+                [Materials.zarosianInsignia, 68],
+                [Materials.imperialSteel, 24],
+                [Materials.samiteSilk, 32],
+                [Materials.whiteOak, 34],
+                [Materials.goldrune, 8],
+                [Materials.ancientVis, 10],
+                [Materials.tyrianPurple, 14]
+            ]);
+            let requiredMaterials = player.calculateCollectionRepair(collection);
+            requiredMaterials.size.should.equal(expectedMaterials.size)
+            expectedMaterials.forEach( (quantity, material) => {
+                requiredMaterials.has(material).should.equal(true);
+                (requiredMaterials.get(material) as number).should.equal(quantity);
+            });
+
+        });
+        
+        it("calculates correct requirements if artefacts are repaired", function() {
+            let expectedMaterials = new Map<Material, number>([
+                [Materials.thirdAgeIron, 58],
+                [Materials.zarosianInsignia, 56],
+                [Materials.imperialSteel, 24],
+                [Materials.samiteSilk, 32],
+                [Materials.whiteOak, 34],
+                [Materials.goldrune, 8],
+                [Materials.ancientVis, 10],
+                [Materials.tyrianPurple, 14]
+            ]);
+            player.addRepairedArtefact(Artefacts.venatorDagger, 1);
+            let requiredMaterials = player.calculateCollectionRepair(collection);
+            requiredMaterials.size.should.equal(expectedMaterials.size)
+            expectedMaterials.forEach( (quantity, material) => {
+                requiredMaterials.has(material).should.equal(true);
+                (requiredMaterials.get(material) as number).should.equal(quantity);
+            })
+        });
+
+        it("calculates correct requirements if all artefacts are repaired", function() {
+            let expectedMaterials = new Map<Material, number>();
+            collection.artefacts.forEach( (artefact) => {
+                player.addRepairedArtefact(artefact, 1);
+            });
+            let requiredMaterials = player.calculateCollectionRepair(collection);
+            requiredMaterials.size.should.equal(expectedMaterials.size)
+        })
+    });
+});
