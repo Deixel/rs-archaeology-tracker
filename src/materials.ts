@@ -16,6 +16,10 @@ class Material {
 
 let Materials: {[name: string]: Material} = {
     
+    // Misc
+    ruby: new Material("Ruby"),
+    whiteCandle: new Material("White Candle"),
+
     // Generic
     thirdAgeIron: new Material("Third Age Iron"),
     samiteSilk: new Material("Samite Silk"),
