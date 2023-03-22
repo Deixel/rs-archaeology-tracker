@@ -15,9 +15,10 @@ class Material {
 }
 
 let Materials: {[name: string]: Material} = {
-    
+
     // Misc
     ruby: new Material("Ruby"),
+    dragonstone: new Material("Dragonstone"),
     whiteCandle: new Material("White Candle"),
 
     // Generic
@@ -69,9 +70,9 @@ let Materials: {[name: string]: Material} = {
 
     // Zaros
     zarosianInsignia: new Material("Zarosian Insignia"),
-    tyrianPurple: new Material("Tyrian Purple"), 
-    imperialSteel: new Material("Imperial Steel"), 
-    ancientVis: new Material("Ancient Vis"), 
+    tyrianPurple: new Material("Tyrian Purple"),
+    imperialSteel: new Material("Imperial Steel"),
+    ancientVis: new Material("Ancient Vis"),
     bloodOfOrcus: new Material("Blood of Orcus"),
 }
 
