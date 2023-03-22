@@ -203,6 +203,55 @@ let Artefacts = {
         {material: Materials.thirdAgeIron, quantity: 20},
         {material: Materials.keramos, quantity: 24},
         {material: Materials.whiteCandle, quantity: 1}
+    ]),
+    brandingIron: new Artefact("Branding Iron", [
+        {material: Materials.thirdAgeIron, quantity: 14},
+        {material: Materials.eyeOfDagon, quantity: 12},
+        {material: Materials.hellfireMetal, quantity: 20}
+    ]),
+    manacles: new Artefact("Manacles", [
+        {material: Materials.thirdAgeIron, quantity: 14},
+        {material: Materials.chaoticBrimstone, quantity: 18},
+        {material: Materials.eyeOfDagon, quantity: 14}
+    ]),
+    ancientTimepiece: new Artefact("Ancient Timepiece", [
+        {material: Materials.goldRune, quantity: 12},
+        {material: Materials.imperialSteel, quantity: 16},
+        {material: Materials.ancientVis, quantity: 18}
+    ]),
+    legatusPendant: new Artefact("Legatus Pendant", [
+        {material: Materials.thirdAgeIron, quantity: 16},
+        {material: Materials.goldRune, quantity: 18},
+        {material: Materials.ancientVis, quantity: 12},
+        {material: Materials.dragonstone, quantity: 1}
+    ]),
+    ceremonialUnicornOrnament: new Artefact("Ceremonial Unicorn Ornament", [
+        {material: Materials.keramos, quantity: 26},
+        {material: Materials.cobaltBlue, quantity: 20}
+    ]),
+    ceremonialUnicornSaddle: new Artefact("Ceremonial Unicorn Saddle", [
+        {material: Materials.leatherScraps, quantity: 24},
+        {material: Materials.cobaltBlue, quantity: 22}
+    ]),
+    tetracompass: new Artefact("Tetracompass (unpowered)", [
+        {material: Materials.malachiteGreen, quantity: 30},
+        {material: Materials.cadmiumRed, quantity: 30},
+        {material: Materials.cobaltBlue, quantity: 30},
+        {material: Materials.aramdyleanYellow, quantity: 30},
+        {material: Materials.tyrianPurple, quantity: 30}
+    ]),
+    everlightHarp: new Artefact("Everlight Harp", [
+        {material: Materials.everlightSilvthril, quantity: 30},
+        {material: Materials.whiteOak, quantity: 22}
+    ]),
+    everlightTrumpet: new Artefact("Everlight Trumpet", [
+        {material: Materials.everlightSilvthril, quantity: 28},
+        {material: Materials.goldRune, quantity: 24}
+    ]),
+    everlightViolin: new Artefact("Everlight Violin", [
+        {material: Materials.starOfSaradomin, quantity: 16},
+        {material: Materials.whiteOak, quantity: 20},
+        {material: Materials.samiteSilk, quantity: 16}
     ])
 
 }
