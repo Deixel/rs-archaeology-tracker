@@ -252,6 +252,14 @@ let Artefacts = {
         {material: Materials.starOfSaradomin, quantity: 16},
         {material: Materials.whiteOak, quantity: 20},
         {material: Materials.samiteSilk, quantity: 16}
+    ]),
+    foldedArmFigurineFemale: new Artefact("Folded-arm Figurine (female)", [
+        {material: Materials.whiteMarble, quantity: 30},
+        {material: Materials.goldrune, quantity: 24}
+    ]),
+    foldedArmFigurineMale: new Artefact("Folded-arm Figurine (male)", [
+        {material: Materials.whiteMarble, quantity: 30},
+        {material: Materials.goldrune, quantity: 24}
     ])
 
 }
