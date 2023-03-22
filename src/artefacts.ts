@@ -215,13 +215,13 @@ let Artefacts = {
         {material: Materials.eyeOfDagon, quantity: 14}
     ]),
     ancientTimepiece: new Artefact("Ancient Timepiece", [
-        {material: Materials.goldRune, quantity: 12},
+        {material: Materials.goldrune, quantity: 12},
         {material: Materials.imperialSteel, quantity: 16},
         {material: Materials.ancientVis, quantity: 18}
     ]),
     legatusPendant: new Artefact("Legatus Pendant", [
         {material: Materials.thirdAgeIron, quantity: 16},
-        {material: Materials.goldRune, quantity: 18},
+        {material: Materials.goldrune, quantity: 18},
         {material: Materials.ancientVis, quantity: 12},
         {material: Materials.dragonstone, quantity: 1}
     ]),
@@ -246,7 +246,7 @@ let Artefacts = {
     ]),
     everlightTrumpet: new Artefact("Everlight Trumpet", [
         {material: Materials.everlightSilvthril, quantity: 28},
-        {material: Materials.goldRune, quantity: 24}
+        {material: Materials.goldrune, quantity: 24}
     ]),
     everlightViolin: new Artefact("Everlight Violin", [
         {material: Materials.starOfSaradomin, quantity: 16},
